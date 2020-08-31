@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Customers;
+use Illuminate\Support\Facades\Validator;
+
 
 class customersController extends Controller
 {
+    public function show()
+    {
+        return customers::all();
+    }
     public function store(Request $request)
     {
         $validator=Validator::make($request->all(),

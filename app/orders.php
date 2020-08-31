@@ -9,5 +9,5 @@ class orders extends Model
     protected $table = 'orders';
     public $timestamps = false;
 
-    protected $fillable = "tgl_orders";
+    protected $fillable = ['tgl_orders', 'id', 'id_cust'];
 }
