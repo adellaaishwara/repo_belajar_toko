@@ -37,6 +37,33 @@ class ordersController extends Controller
         return Response()->json(['status' => 0]);
         }
     }
+        public function update($id, Request $request)
+        {
+            $validator=Validator::make($request->all(),
+        [
+            'tgl_orders' => 'required',
+            'id' => 'required',
+            'id_cust' => 'required'
+        ]
+    
+    );
+        if($validator->fails()) {
+            return Response()->json($validator->errors());
+        }
+
+        $ubah = orders::where('id', $id)->update([
+            'tgl_orders' => $request->tgl_orders,
+            'id' => $request->id,
+            'id_cust' => $request->id_cust
+        ]);
+
+        if($ubah) {
+            return Response()->json(['status' => 1]);
+        }
+        else{
+            return Response()->json(['status' => 0]);
+        }
+        }
 
         public function show()
         {
@@ -57,7 +84,7 @@ class ordersController extends Controller
         }
 }
 }
-    
+
     
 
     
