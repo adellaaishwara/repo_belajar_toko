@@ -27,3 +27,4 @@ Route::get('/orders', 'ordersController@show');
 Route::get('/orders/{id}', 'ordersController@detail');
 Route::post('/orders', 'ordersController@store');
 Route::put('/orders/{id}', 'ordersController@update');
+Route::delete('/siswa/{id}', 'SiswaController@destroy');

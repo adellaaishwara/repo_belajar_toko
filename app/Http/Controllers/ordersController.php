@@ -42,7 +42,6 @@ class ordersController extends Controller
             $validator=Validator::make($request->all(),
         [
             'tgl_orders' => 'required',
-            'id' => 'required',
             'id_cust' => 'required'
         ]
     
@@ -53,7 +52,6 @@ class ordersController extends Controller
 
         $ubah = orders::where('id', $id)->update([
             'tgl_orders' => $request->tgl_orders,
-            'id' => $request->id,
             'id_cust' => $request->id_cust
         ]);
 
@@ -82,8 +80,19 @@ class ordersController extends Controller
             else{
                 return Response()->json(['message' => 'Tidak ditemukan']);
         }
-}
-}
+    }
+        public function destroy($id)
+        {
+            $hapus = Orders::where('id', $id)->delete();
+            if($hapus) {
+                return Response()->json(['status' => 1]);
+            }
+            else{
+                return Response()->json(['status' => 0]);
+            }
+        }
+    }
+
 
     
 
